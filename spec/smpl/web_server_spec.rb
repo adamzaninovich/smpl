@@ -22,7 +22,19 @@ describe SMPL::WebServer do
       last_response.should be_ok
     end
   end
+  
+  describe "Faye" do
+    it "mounts faye at #{SMPL::CONFIG[:faye][:mount]}" do
+      get "#{SMPL::CONFIG[:faye][:mount]}.js"
+      last_response.should be_ok
+    end
+  end
+  
+  describe "Coffee" do
+    it "renders CoffeeScript files placed in public#{SMPL::CONFIG[:coffee][:dir]}" do
+      get "#{SMPL::CONFIG[:coffee][:dir]}/smpl.js"
+      last_response.should be_ok
+    end
+  end
 
-  alias_method :request,  :last_request
-  alias_method :response, :last_response
 end

@@ -1,0 +1,10 @@
+:smpl:
+  :port: 3333
+:faye:
+  :mount: "/faye"
+  :timeout: 45
+  :channel: "/smpl/log"
+:coffee:
+  :dir: "/js"
+  :static: false
+  :nowrap: true

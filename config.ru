@@ -1,8 +1,7 @@
-require File.expand_path('../lib/smpl/web_server', __FILE__)
+LIBS = File.expand_path('../lib', __FILE__)
 
-# TODO: add in faye as a rack adapter
-
-# TODO serve coffee
+require "#{LIBS}/smpl"
+require "#{LIBS}/smpl/web_server"
 
 # run the web server
 run SMPL::WebServer.new
