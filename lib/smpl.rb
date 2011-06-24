@@ -1,3 +1,3 @@
-module Smpl
+module SMPL
   # Your code goes here...
 end

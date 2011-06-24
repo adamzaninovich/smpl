@@ -4,7 +4,7 @@ require "smpl/version"
 
 Gem::Specification.new do |s|
   s.name        = "smpl"
-  s.version     = Smpl::VERSION
+  s.version     = SMPL::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["TODO: Write your name"]
   s.email       = ["TODO: Write your email address"]
@@ -13,6 +13,11 @@ Gem::Specification.new do |s|
   s.description = %q{TODO: Write a gem description}
 
   s.rubyforge_project = "smpl"
+  
+  s.add_dependency              'rack',               '~> 1.3.0'
+  s.add_dependency              'sinatra-synchrony',  '~> 0.0.3'
+  s.add_development_dependency  'rspec',              '~> 2.6.0'
+  s.add_development_dependency  'rack-test',          '~> 0.6.0'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
