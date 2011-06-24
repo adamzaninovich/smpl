@@ -29,6 +29,17 @@ describe SMPL::WebServer do
         last_response.body.should == File.read(SMPL::PUBLIC + '/index.html')
       end
     end
+    
+    describe "'/css/style.css'" do
+      it "responds" do
+        get '/css/style.css'
+        last_response.should be_ok
+      end
+      it "renders sass template" do
+        get '/css/style.css'
+        last_response.body.should =~ /\A(^body.*\}$\n)+(^body.*\}$)\z/
+      end
+    end
 
     describe "'/images/:image'" do
       describe "when image exists" do

@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Adam Zaninovich"]
   s.email       = ["adam.zaninovich@gmail.com"]
   s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = %q{Simple TCP server with web front-end}
+  s.description = %q{EventMachine-backed TCPserver accepts connections and displays them on a sinatra-based web interface}
 
   s.rubyforge_project = "smpl"
   
@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
   s.add_dependency              'rack-coffee',        '~> 0.9.1'
   s.add_dependency              'faye',               '~> 0.6.2'
   s.add_dependency              'sinatra-synchrony',  '~> 0.0.3'
+  s.add_dependency              'sass',               '~> 3.1.3'
   s.add_development_dependency  'rack-test',          '~> 0.6.0'
   s.add_development_dependency  'rspec',              '~> 2.6.0'
 

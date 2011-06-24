@@ -4,3 +4,4 @@ pkg/*
 .rvmrc
 **.log
 **.pid
+.sass-cache

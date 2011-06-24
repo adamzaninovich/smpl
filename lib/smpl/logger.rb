@@ -11,7 +11,7 @@ module SMPL
         @type = :bayeux
         @client = Faye::Client.new(
           'http://' <<
-          SMPL::CONFIG[:smpl][:http_host] <<
+          SMPL::CONFIG[:web][:host] << ':' << SMPL::CONFIG[:web][:port].to_s << 
           SMPL::CONFIG[:faye][:mount]
         )
       when /file/
