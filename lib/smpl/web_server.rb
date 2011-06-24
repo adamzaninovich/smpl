@@ -1,6 +1,5 @@
 require 'sinatra/base'
 require 'sinatra/synchrony'
-require 'faye'
 require 'rack/coffee'
 
 module SMPL
@@ -13,7 +12,7 @@ module SMPL
                             timeout:    SMPL::CONFIG[:faye][:timeout],
                             extensions: []
     
-    use Rack::Coffee, root:   "#{SMPL::ROOT}/public",
+    use Rack::Coffee, root:   SMPL::PUBLIC,
                       urls:   SMPL::CONFIG[:coffee][:dir],
                       static: SMPL::CONFIG[:coffee][:static],
                       nowrap: SMPL::CONFIG[:coffee][:nowrap]
@@ -21,7 +20,15 @@ module SMPL
     # Handlers
     
     get '/' do
-      '<pre>' << SMPL::CONFIG.inspect << '</pre>'
+      send_file SMPL::PUBLIC + '/index.html'
+    end
+    
+    get '/images/:image' do
+      if params[:image] =~ /\.(png|jpg|jpeg)\z/i
+        halt 404 unless send_file SMPL::PUBLIC + '/images/' + params[:image]
+      else
+        halt 404
+      end
     end
     
   end
