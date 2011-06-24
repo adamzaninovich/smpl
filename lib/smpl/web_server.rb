@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require 'sinatra/synchrony'
 require 'rack/coffee'
+require 'faye'
 
 module SMPL
   class WebServer < Sinatra::Base

@@ -1,5 +1,4 @@
 require 'yaml'
-require 'faye'
 
 module SMPL
   ROOT    = File.expand_path('../../',__FILE__)
