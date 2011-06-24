@@ -1,0 +1,3 @@
+module Smpl
+  # Your code goes here...
+end
