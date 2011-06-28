@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Welcome to SMPL Server</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div id="container">
+
+    <div id="super-nav" class="clearfix"> 
+    	<div class="container_16 clearfix"> 
+    		<div class="grid_16"> 
+    			<div id="status_container">Status: <span id="status">Loading...</span></div>
+    		</div> 
+    	</div> 
+    </div><!-- // super-nav --> 
+
+    <div id="header" class="clearfix">
+      
+      <div class="container_16 clearfix"> 
+  			<div class="grid_4"> 
+  				<div id="logo"> 
+  					<a href='/'>SMPL Server</a>
+  				</div><!-- // logo --> 
+  			</div> 
+	
+  			<div class="grid_11 prefix_1"> 
+  				<div id="menu"> 
+  					<ul> 
+  						<li class="selected"><a href="/stats">Stats</a></li> 
+  						<li><a href="/graphs">Graphs</a></li> 
+  						<li><a href="/help">Help</a></li> 
+  					</ul> 
+  				</div><!-- // nav  --> 
+  			</div> 
+    	</div><!-- // .container_16  --> 
+      
+    </div>
+    
+    <div id="content" class="container_16 clearfix">
+      <%= yield %>
+    </div>
+    
+    <div id="footer" class="container_16 clearfix"> 
+    	<div class="grid_5 suffix_6"> 
+    		&copy; 2011 <a href="http://adamzaninovich.com">Adam Zaninovich</a>
+    		<br/>California, USA
+    	</div> 
+	
+    	<div class="grid_5"> 
+    		This code freely available on
+    		<br/>
+    		<a class='github' href="https://github.com/adamzaninovich/smpl">
+    		  <img width='80' src="/images/github.png" />
+    		</a>
+    	</div> 
+    </div> 
+    
+    
+  </div> <!--! end of #container -->
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+  <script src="/faye.js"></script>
+  <script src='/js/smpl.js'></script>
+</body>
+</html>
