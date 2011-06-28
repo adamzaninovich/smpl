@@ -1,3 +1,4 @@
+require_relative '../smpl'
 require 'faye'
 
 module SMPL
@@ -31,7 +32,7 @@ module SMPL
       if @type == :bayeux
         bayeux_log(text, data)
       else
-        if data[:type].nil? or data[:type] == :text
+        if data[:type].nil? or data[:type].to_sym == :text
           output = text
         else
           output = "#{data[:ip]}\t#{data[:time].ctime}\t#{text}"
@@ -43,7 +44,7 @@ module SMPL
     
     private
     def bayeux_log(text,data)
-      unless data[:type].nil? or data[:type] == :text
+      unless data[:type].nil? or data[:type].to_sym == :text
         data.merge!({logger:self.object_id, text:text})
         data[:time] = (data[:time].to_f*1000).to_i
         @client.publish(SMPL::CONFIG[:faye][:channel], data)

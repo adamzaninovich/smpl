@@ -29,6 +29,7 @@ describe SMPL::Logger do
       SMPL::Logger.new().should be_using        :stdout
       SMPL::Logger.new('').should be_using      :stdout
       SMPL::Logger.new('blah').should be_using  :stdout
+      SMPL::Logger.new(:stdout).should be_using :stdout
     end
     
     it "uses bayeux when given bayeux option" do
