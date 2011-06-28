@@ -3,13 +3,10 @@ require 'smpl/web_server'
 require 'rack/test'
 
 # Set Sinatra env to test
-module SMPL
-  class WebServer
-    set :environment, :test
-  end
-end
+SMPL::WebServer.set :environment, :test
 
 describe SMPL::WebServer do
+  
   include Rack::Test::Methods
   
   def app
@@ -19,14 +16,30 @@ describe SMPL::WebServer do
   describe "Paths" do
     
     describe "'/'" do
-      it "responds" do
+      it "redirects" do
         get '/'
+        last_response.should be_redirection
+      end
+    end
+    
+    describe "'/stats'" do
+      it "responds" do
+        get '/stats'
         last_response.should be_ok
       end
-      it "sends #{SMPL::PUBLIC}/index.html" do
-        # public/index.html must exist for this to be accurate
-        get '/'
-        last_response.body.should == File.read(SMPL::PUBLIC + '/index.html')
+    end
+    
+    describe "'/graphs'" do
+      it "responds" do
+        get '/graphs'
+        last_response.should be_ok
+      end
+    end
+    
+    describe "'/help'" do
+      it "responds" do
+        get '/help'
+        last_response.should be_ok
       end
     end
     
@@ -34,10 +47,6 @@ describe SMPL::WebServer do
       it "responds" do
         get '/css/style.css'
         last_response.should be_ok
-      end
-      it "renders sass template" do
-        get '/css/style.css'
-        last_response.body.should =~ /\A(^body.*\}$\n)+(^body.*\}$)\z/
       end
     end
 

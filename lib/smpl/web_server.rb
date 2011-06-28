@@ -1,5 +1,4 @@
-# TODO: test new conf settings and sass
-
+require_relative '../smpl'
 require 'sinatra/base'
 require 'sinatra/synchrony'
 require 'rack/coffee'
@@ -33,11 +32,23 @@ module SMPL
     # Handlers
     
     get '/' do
-      send_file File.join(SMPL::PUBLIC, 'index.html')
+      redirect '/stats'
+    end
+    
+    get '/stats' do
+      erb :stats
+    end
+    
+    get '/graphs' do
+      erb :graphs
+    end
+    
+    get '/help' do
+      erb :help
     end
     
     get '/css/style.css' do
-      sass :style
+      sass :main
     end
     
     get '/images/:image' do
